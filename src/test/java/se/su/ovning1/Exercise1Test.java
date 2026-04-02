@@ -1,5 +1,6 @@
 package se.su.ovning1;
 
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -339,12 +340,12 @@ Total incl. VAT: 1017.75
         receipt = order.getReceipt();
 
         assertEquals(885.0, order.getTotalValue(), ORDER_INCORRECT_VALUE_EXCL_VAT);
-        assertEquals(1024, order.getTotalValuePlusVAT(), ORDER_INCORRECT_VALUE_INCL_VAT);
+        assertEquals(1030.25, order.getTotalValuePlusVAT(), ORDER_INCORRECT_VALUE_INCL_VAT);
 
         part = Set.of("Book", "Beethoven: a biography", "Holmqvist", "false", "400.0", "424.0");
         assertTrue(part.stream().allMatch(receipt::contains), String.format(message, part, receipt));
 
-        part = Set.of("Giant Steps", "John Coltrane", "1959", "LP", "10", "100.0", "430.0", "537.5");
+        part = Set.of("Giant Steps", "John Coltrane", "1959", "LP", "10", "100.0", "435.0", "543.75");
         assertTrue(part.stream().allMatch(receipt::contains), String.format(message, part, receipt));
 
         part = Set.of("Kind of Blue", "Miles Davis", "1959", "CD", "5", "100.0", "50.0", "62.5");
@@ -363,8 +364,8 @@ Total incl. VAT: 631.25
         order = new Order(lp1, lp2, lp3);
         receipt = order.getReceipt();
 
-        assertEquals(540.0, order.getTotalValue(), ORDER_INCORRECT_VALUE_EXCL_VAT);
-        assertEquals(675.00, order.getTotalValuePlusVAT(), ORDER_INCORRECT_VALUE_INCL_VAT);
+        assertEquals(550.0, order.getTotalValue(), ORDER_INCORRECT_VALUE_EXCL_VAT);
+        assertEquals(687.5, order.getTotalValuePlusVAT(), ORDER_INCORRECT_VALUE_INCL_VAT);
 
         part = Set.of("Punisher", "Phoebe Bridgers", "2020", "CD", "10", "200.0", "250.0");
         assertTrue(part.stream().allMatch(receipt::contains), String.format(message, part, receipt));

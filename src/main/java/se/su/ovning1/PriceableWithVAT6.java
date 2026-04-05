@@ -1,4 +1,8 @@
 package se.su.ovning1;
 
-public interface PriceablewithVAT6 {
+public interface PriceableWithVAT6 extends Priceable {
+
+    public double getVAT();
+
+
 }

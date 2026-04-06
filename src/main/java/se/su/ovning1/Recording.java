@@ -25,8 +25,10 @@ public abstract class Recording extends Item implements PriceableWithVAT25 {
         return condition;
     }
 
+    @Override
     public double getPrice(){
-        return 0.0;
+        double currentPrice = price *(condition/10.0);
+        return Math.max(currentPrice, 10.0);
     }
 
     public int getYear() {
@@ -35,5 +37,27 @@ public abstract class Recording extends Item implements PriceableWithVAT25 {
 
     protected double getOriginalPrice(){
         return price;
+    }
+
+    @Override
+    public String toString(){
+        return String.format(
+                "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |",
+                "Type", getType(),
+                "Name", super.getName(),
+                "Artist", getArtist(),
+                "Year", getYear(),
+                "Condition", getCondition(),
+                "Original Price", getOriginalPrice(),
+                "Price with VAT", getPriceWithVAT(),
+                "Price", getPrice()
+        );
     }
 }

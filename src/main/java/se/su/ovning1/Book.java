@@ -5,6 +5,7 @@ public class Book extends Item implements PriceableWithVAT6 {
     private final String author;
     private final double price;
     private final boolean bound;
+    private static final double BOUND_PRICE_INCREASE  = 1.3;
 
 
     public Book(String name, String author, double price, boolean bound){
@@ -16,16 +17,24 @@ public class Book extends Item implements PriceableWithVAT6 {
 
     @Override
     public double getPrice() {
-        return price;
+        return (bound) ? price*BOUND_PRICE_INCREASE : price;
     }
 
     @Override
-    public double getVAT() {
-        return 0;
-    }
-
-    @Override
-    public double getPriceWithVAT() {
-        return 0;
+    public String toString() {
+        return String.format(
+                "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |\n" +
+                        "| %-6s | %-20s |",
+                "Type", "Book",
+                "Title", super.getName(),
+                "Author", author,
+                "Bound", bound,
+                "Price", getPrice(),
+                "Price with VAT", getPriceWithVAT()
+        );
     }
 }

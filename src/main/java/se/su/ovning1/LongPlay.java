@@ -2,6 +2,8 @@ package se.su.ovning1;
 
 public class LongPlay extends Recording{
 
+    private static final int CURRENT_YEAR = 2026;
+
     public LongPlay(String name, String artist, int year, int condition, double price){
         super(name, artist, year, condition, price);
     }
@@ -12,17 +14,7 @@ public class LongPlay extends Recording{
     }
 
     @Override
-    public double getVAT() {
-        return 0;
-    }
-
-    @Override
-    public double getPriceWithVAT() {
-        return 0;
-    }
-
-    @Override
-    public double getVat() {
-        return 0;
+    public double getPrice(){
+        return super.getPrice() + ((CURRENT_YEAR-getYear()) * 5.0);
     }
 }

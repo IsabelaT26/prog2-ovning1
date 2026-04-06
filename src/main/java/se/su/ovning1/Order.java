@@ -16,14 +16,33 @@ public class Order {
     }
 
     public String getReceipt() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Items:\n");
+
+        for (Item item : items) {
+            sb.append(item).append("\n"); // no need for toString()
+        }
+
+        sb.append("Price: ").append(getTotalValue()).append("\n");
+        sb.append("Price with VAT: ").append(getTotalValuePlusVAT());
+
+        return sb.toString(); // cleaner than String.valueOf
     }
 
     public double getTotalValuePlusVAT(){
-        return 0.0;
+        double totalValueWithVAT = 0.0;
+        for (Item item: items){
+            totalValueWithVAT+=item.getPriceWithVAT();
+        }
+        return totalValueWithVAT;
     }
 
     public double getTotalValue(){
-        return 0.0;
+        double totalValue = 0.0;
+        for (Item item: items){
+            totalValue +=item.getPrice();
+        }
+        return totalValue;
     }
 }

@@ -1,6 +1,6 @@
 package se.su.ovning1;
 
-public class CompactDisc extends Recording {
+public class CompactDisc extends Recording{
 
     public CompactDisc(String name, String artist, int year, int condition, double price) {
         super(name, artist, year, condition, price);
@@ -9,20 +9,5 @@ public class CompactDisc extends Recording {
     @Override
     public String getType() {
         return "CD";
-    }
-
-    @Override
-    public double getVAT() {
-        return 0;
-    }
-
-    @Override
-    public double getPriceWithVAT() {
-        return 0;
-    }
-
-    @Override
-    public double getVat() {
-        return 0;
     }
 }

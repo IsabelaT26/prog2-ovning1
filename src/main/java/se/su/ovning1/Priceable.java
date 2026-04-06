@@ -1,7 +1,9 @@
 package se.su.ovning1;
 
 public interface Priceable {
-    public abstract double getPrice();
-    public abstract double getVAT();
-    public double getPriceWithVAT();
+    abstract double getPrice();
+    abstract double getVAT();
+     default double getPriceWithVAT(){
+         return getPrice() * (1+getVAT());
+     };
 }
